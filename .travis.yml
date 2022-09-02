@@ -1,13 +1,14 @@
-language: generic
 sudo: required
+language: generic
+
 services:
   - docker
 
 before_install:
-  - docker build -t davebulaklak/docker-react-2 -f Dockerfile.dev .
+  - docker build -t davebulaklak/docker-react-2  -f Dockerfile.dev .
 
 script:
-  - docker run -e CI=true davebulaklak/docker-react-2 npm run test
+  - docker run -e CI=true davebulaklak/docker-react-2  npm run test
 
 deploy:
   provider: elasticbeanstalk
@@ -17,6 +18,6 @@ deploy:
   bucket_name: "elasticbeanstalk-us-west-1-977936595005"
   bucket_path: "docker-react-2"
   on:
-    branch: master
+    branch: main
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
