@@ -1,0 +1,29 @@
+// building docker image with specific docker file.
+
+docker build -f Dockerfile.dev .
+
+
+// run 
+
+docker run -d --rm -p 3000:3000 --name frontend-dev frontend-dev 
+
+docker run -d --rm -p 3000:3000 --name frontend-dev -v /app/node_modules -v "C:\Users\daveb\Udemy-Projects\docker-react-project\front-end:/app" frontend-dev 
+
+
+//with docker-compose.yml
+  docker-compose up
+
+//running test
+  docker run -it front-end-dev:v1 npm run test
+
+// running live updates with test
+  docker exec -it 1a6d40a4caa2 npm run test
+
+// with test image in docker-compose.yml
+  docker-compose up --build 
+
+// creating prod image
+  docker build -t front-end-web-prod .
+
+// running prod image 
+  docker run -p 8080:80 front-end-web-prod    
