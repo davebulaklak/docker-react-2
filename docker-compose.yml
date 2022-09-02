@@ -1,7 +1,6 @@
 version: "3"
 services:
   web:
-    image: front-end-dev:v1.1
     build:
       context: .
       dockerfile: Dockerfile
